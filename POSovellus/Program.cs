@@ -26,11 +26,6 @@ namespace POSovellus
         static void Main(string[] args)
         {
             AsetaDataDirectory();
-            //TuoteRepository tr = new TuoteRepository(yhteysasetukset.ConnectionString);
-            AsiakasRepository ar = new AsiakasRepository(yhteysasetukset.ConnectionString);
-
-            //TilausOtsikkoRepository tlr = new TilausOtsikkoRepository(yhteysasetukset.ConnectionString);
-            //TilausRiviRepository ttr = new TilausRiviRepository(yhteysasetukset.ConnectionString);
 
             Alkuvalikko();
 
@@ -118,7 +113,7 @@ namespace POSovellus
                 Console.Write("Anna poistettava tunnus: ");
                 tunnus = Console.ReadLine();
 
-                if (!asiakkaatJoillaEiTilauksia.Any(x => x.AsiakasId == tunnus))
+                if (!asiakkaatJoillaEiTilauksia.Any(x => x.AsiakasId == tunnus.PadRight(5)))
                 {
                     TekstinVarinVaihto("Tunnusta ei löydy listalta.", ConsoleColor.Red);
                     tunnusOnTosi = false;
@@ -252,9 +247,13 @@ namespace POSovellus
                 Console.Write("Anna tunnus: ");
                 tunnus = Console.ReadLine();
 
-                if (!tunnus.Length.Equals(5))
+                if (tunnus.Length > 5)
                 {
                     TekstinVarinVaihto("Sallittu merkkikoko on 5", ConsoleColor.Red);
+                }
+                else if (tunnus == "")
+                {
+                    TekstinVarinVaihto("Tyhjä merkkijono ei ole sallittu", ConsoleColor.Red);
                 }
                 else
                 {
@@ -379,11 +378,10 @@ namespace POSovellus
                         Console.WriteLine($"  Tilaus: {tilaus.Id}, tuotteita: {tilaus.TilausRivit.Count}, arvo yhteensä {tilaus.TilausRivit.Sum(x => (x.Hinta * x.Maara)).ToString("f2")}");
 
                     }
-                    while (indexNumber < asiakkaat.Count)
+                    if (indexNumber < asiakkaat.Count)
                     {
                         Console.Write("Seuraava painamalla Enter");
                         Console.ReadLine();
-                        break;
                     }
                     indexNumber++;
                 }
@@ -437,11 +435,10 @@ namespace POSovellus
                         Console.WriteLine($"  Tilaus: {tilaus.Id}, tuotteita: {tilaus.TilausRivit.Count}, arvo yhteensä {tilaus.TilausRivit.Sum(x => (x.Hinta * x.Maara)).ToString("f2")}");
 
                     }
-                    while (indexNumber < asiakkaat.Count)
+                    if (indexNumber < asiakkaat.Count)
                     {
                         Console.Write("Seuraava painamalla Enter");
                         Console.ReadLine();
-                        break;
                     }
                     indexNumber++;
                 }
@@ -496,12 +493,10 @@ namespace POSovellus
                         Console.WriteLine($"  Tilaus: {tilaus.Id}, tuotteita: {tilaus.TilausRivit.Count}, arvo yhteensä {tilaus.TilausRivit.Sum(x => (x.Hinta * x.Maara)).ToString("f2")}");
 
                     }
-                    while (indexNumber < asiakkaat.Count)
+                    if (indexNumber < asiakkaat.Count)
                     {
                         Console.Write("Seuraava painamalla Enter");
                         Console.ReadLine();
-                        break;
-
                     }
                     indexNumber++;
 

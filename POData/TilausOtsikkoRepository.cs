@@ -72,7 +72,7 @@ namespace POData
 
         public List<TilausOtsikko> HaeKaikki()
         {
-            string sql = "SELECT *" +
+            string sql = "SELECT * " +
                          "FROM dbo.[Orders] " +
                          "ORDER BY CustomerID";
             SqlConnection cn = null;

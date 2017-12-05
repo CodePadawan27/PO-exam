@@ -164,7 +164,6 @@ namespace POData
             }
         }
 
-
         public List<Asiakas> HaeMaa(string maa)
         {
             string sql = "SELECT * " +
@@ -190,7 +189,6 @@ namespace POData
                 cn?.Close();
             }
         }
-
         public Asiakas Hae(string id)
         {
             string sql = "SELECT * " +
@@ -218,10 +216,9 @@ namespace POData
                 cn?.Close();
             }
         }
-
         public List<Asiakas> HaeKaikki()
         {
-            string sql = "SELECT *" +
+            string sql = "SELECT * " +
                          "FROM dbo.Customers " +
                          "ORDER BY CustomerID";
             SqlConnection cn = null;
