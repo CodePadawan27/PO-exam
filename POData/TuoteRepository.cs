@@ -6,7 +6,7 @@ using System.Data;
 
 namespace POData
 {
-    public class TuoteRepository : DataAccess//, IRepository<Tuote>
+    public class TuoteRepository : DataAccess
     {
         public TuoteRepository(string yhteys)
             : base(yhteys)

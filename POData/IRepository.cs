@@ -7,7 +7,7 @@ namespace POData
         bool Lisaa(T o);
         bool Poista(string id);
         bool Muuta(T o);
-        T Hae(string id);
+        T Hae(string o);
         List<T> HaeKaikki();
     }
 }

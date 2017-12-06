@@ -10,7 +10,7 @@ using System.Data;
 namespace POData
 {
     //ORDERS
-    public class TilausOtsikkoRepository : DataAccess//, IRepository<Tilaus>
+    public class TilausOtsikkoRepository : DataAccess
     {
         public TilausOtsikkoRepository(string yhteys)
             : base(yhteys)
